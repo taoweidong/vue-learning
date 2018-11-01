@@ -12,6 +12,7 @@
 <script>
 //导入组件
 import Hello from "./components/Hello";
+// 测试导入第二个组件
 import World from "./components/World";
 // 脚本代码
 // export default {
