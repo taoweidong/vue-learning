@@ -1,11 +1,10 @@
 <template>
-    <div class="hello">
-        
-        <h1>{{msg}}</h1>
-        <h2>father tell me:{{msgfromworld}}</h2>
-        <!-- 绑定事件 -->
-        <button v-on:click="doThis">{{msg}}</button>
-    </div>
+  <div class="hello">
+    <h1>{{msg}}</h1>
+    <h2>父类发送过来的数据:{{msgfromworld}}</h2>
+    <!-- 绑定事件 -->
+    <button v-on:click="doThis">{{msg}}</button>
+  </div>
 </template>
 
 <script>
@@ -23,7 +22,7 @@ export default {
   methods: {
     doThis: function() {
       console.log(this.msgfromworld);
-      this.$emit("child-tell-me-something", this.msg);
+      this.$emit("子页面发送过来的数据：", this.msg);
     }
   },
   /* 数据监听的方法 */
