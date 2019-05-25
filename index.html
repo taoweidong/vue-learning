@@ -11,26 +11,63 @@
 
 <body>
     <div id="app">
-        <!-- 显示数据 -->
+        <!-- 插值练习 -->
         <h1 v-text='msg'></h1>
         <!-- 属性绑定 -->
         <a v-bind:href='url'>属性绑定测试</a><br />
+        <!-- 简写方式属性绑定 -->
+        <input :value="msg">
         <!-- 事件绑定 -->
         <button v-on:click="showView">事件绑定</button>
+        <!-- 计算属性:计算属性可以使用ajax从后台获取数据然后反显的数据 -->
+        <p>{{meesgae}}</p>
+        <p>{{getDate}}</p>
+        <p>{{getDateMethod}}</p>
+        <!-- 侦听属性 -->
+        <p>{{fullName}}</p>
 
     </div>
 
-    <script>
-        var vue = new Vue({
+    <div id="app2">
+        <h1>这是第二个Vue对象创建的信息</h1>
+        {{msg}}
+    </div>
 
+    <script>
+
+        var vue2 = new Vue({
+            el: '#app2',
+            data: {
+                msg: 'Hello Vue'
+            }
+        });
+
+        var vue = new Vue({
             el: '#app',
             data: {
                 msg: 'Hello World!',
-                url: 'http://www.baidu.com'
+                url: 'http://www.baidu.com',
+                fullName: 'dasd'
             },
             methods: {
                 showView: function () {
                     alert('事件绑定练习！！！');
+                },
+                getDateMethod: function () {
+                    return Date.now();
+                }
+            },
+            computed: {
+                meesgae: function () {
+                    return this.msg.split('').reverse().join('');
+                },
+                getDate: function () {
+                    return Date.now();
+                }
+            },
+            watch: {
+                msg: function (val) {
+                    this.fullName = this.msg + '---' + val;
                 }
             },
         });
