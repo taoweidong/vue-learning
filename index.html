@@ -1,8 +1,41 @@
 <!DOCTYPE html>
-<header>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>基本vue学习</title>
-</header>
+    <script src="vue.js"></script>
+</head>
 
 <body>
-    <h1>Vue基本学习</h1>
+    <div id="app">
+        <!-- 显示数据 -->
+        <h1 v-text='msg'></h1>
+        <!-- 属性绑定 -->
+        <a v-bind:href='url'>属性绑定测试</a><br />
+        <!-- 事件绑定 -->
+        <button v-on:click="showView">事件绑定</button>
+
+    </div>
+
+    <script>
+        var vue = new Vue({
+
+            el: '#app',
+            data: {
+                msg: 'Hello World!',
+                url: 'http://www.baidu.com'
+            },
+            methods: {
+                showView: function () {
+                    alert('事件绑定练习！！！');
+                }
+            },
+        });
+
+    </script>
 </body>
+
+</html>
