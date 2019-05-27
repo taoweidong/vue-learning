@@ -1,12 +1,10 @@
 <!--展示模板 -->
 <template>
-	<div id="app2">
+  <div id="app2">
     <!--  <img src="./assets/logo.png"> -->
-		<!--  <router-view/> -->
-		<world></world>
-	</div>
-
-  
+    <!--  <router-view/> -->
+    <elementUi></elementUi>
+  </div>
 </template>
 
 <script>
@@ -14,6 +12,7 @@
 import Hello from "./components/Hello";
 // 测试导入第二个组件
 import World from "./components/World";
+import ElementUi from "./components/ElementUi";
 // 脚本代码
 // export default {
 //   name: "app",
@@ -26,7 +25,7 @@ import World from "./components/World";
 export default {
   name: "app2",
   components: {
-    World
+    ElementUi
   }
 };
 </script>
