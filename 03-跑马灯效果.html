@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>跑马灯效果练习</title>
+    <!-- 1.导入vue包 -->
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <!-- 2.创建一个要控制的区域 -->
+    <div id="app">
+        <input type="button" value="浪起来" v-on:click='langqilai'>
+        <input type="button" value="猥琐发育" v-on:click="weisuofayu">
+
+        <h2 v-text='msg'></h2>
+
+    </div>
+
+    <script>
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                msg: 'Hello World vue app!',
+                intervalId: null
+            },
+            methods: {
+                langqilai: function () {
+                    // alert(this.msg);
+                    // console.log(this.msg);
+                    if (this.intervalId != null) return;
+                    this.intervalId = setInterval(() => {
+                        this.msg = this.msg.substring(1) + this.msg.substring(0, 1);
+                    }, 400)
+                    /* 注意：vu实例会监听自己身上data中所有 数据的改变，只要数据发生变化，就会自动把最新的数据，从data上同步到页面中去；
+                     * 好处：程序员只需要关心数据，不需要考虑如何重新渲染DOM页面
+                     */
+                    this.intervalId = null;
+                }
+            },
+        })
+
+    </script>
+</body>
+
+</html>

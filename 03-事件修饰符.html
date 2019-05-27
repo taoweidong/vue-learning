@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件修饰符</title>
+
+    <script src="vue.js"></script>
+
+    <style>
+        .inner {
+            height: 150px;
+            background-color: aquamarine
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <h1 v-text="msg"></h1>
+        <div class="inner" @click="div1Handler">
+            <!-- 使用.stop阻止冒泡 -->
+            <input type="button" value="戳他" @click.stop="btnClick">
+            <!-- 使用.prevent阻止默认行为 -->
+            <a href="http://www.baidu.com" @click.prevent.stop='showLink'>有问题，去百度</a>
+        </div>
+    </div>
+
+    <script>
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                msg: 'Hello'
+            },
+            methods: {
+                div1Handler: function () {
+                    alert('div的事件');
+                },
+                btnClick: function () {
+                    alert('按钮的事件');
+                },
+                showLink: function () {
+                    alert("链接的点击事件");
+                }
+            },
+        })
+
+    </script>
+</body>
+
+</html>
