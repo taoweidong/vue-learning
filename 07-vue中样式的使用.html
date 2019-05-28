@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue中的样式使用</title>
+
+    <script src="vue.js"></script>
+
+    <style>
+        .red {
+            color: brown
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <div id="app">
+        <h1 v-text="msg" :class="{red:flag}"></h1>
+
+    </div>
+
+    <script>
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                msg: '这是一个很大很大的H1',
+                flag: true
+            },
+            methods: {
+
+            },
+        })
+
+    </script>
+</body>
+
+</html>
