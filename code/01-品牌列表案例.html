@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>品牌列表案例</title>
+    <script src="../vue.js"></script>
+    <!-- 引入boostrap样式文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="app">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">添加信息</h3>
+            </div>
+            <div class="panel-body form-inline">
+                <label>id:
+                    <input type="text" class="form-control" v-model="id">
+                </label>
+                <label>name:
+                    <input type="text" class="form-control" v-model="name">
+                </label>
+
+                <input type="button" value="添加" class="btn btn-primary" @click="add">
+            </div>
+        </div>
+
+
+        <table class="table table-bordered table-striped table-hover ">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>date</th>
+                    <th>operate</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item, index) in list" :key="index">
+                    <td v-text="item.id"></td>
+                    <td v-text="item.name"></td>
+                    <td v-text="item.cTime"></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+
+    <script>
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                id: '',
+                name: '',
+                list: [
+                    { id: '1', name: '宝马', cTime: new Date() },
+                    { id: '2', name: '奔驰', cTime: new Date() },
+                    { id: '3', name: '大众朗逸', cTime: new Date() },
+                ]
+            },
+            methods: {
+                add() {
+
+                    if (this.id == '' || this.name == '') {
+                        alert("信息不能为空!");
+                        return;
+                    }
+
+                    var obj = {
+                        id: this.id,
+                        name: this.name,
+                        cTime: new Date()
+                    };
+
+                    this.list.push(obj);
+                    //清空旧数据
+                    this.id = this.name = '';
+                }
+            }
+        })  
+    </script>
+</body>
+
+</html>
