@@ -3,7 +3,7 @@
   <div id="app2">
     <!--  <img src="./assets/logo.png"> -->
     <!--  <router-view/> -->
-    <elementUi></elementUi>
+    <dataTable></dataTable>
   </div>
 </template>
 
@@ -13,6 +13,7 @@ import Hello from "./components/Hello";
 // 测试导入第二个组件
 import World from "./components/World";
 import ElementUi from "./components/ElementUi";
+import DataTable from "./components/DataTable";
 // 脚本代码
 // export default {
 //   name: "app",
@@ -25,7 +26,7 @@ import ElementUi from "./components/ElementUi";
 export default {
   name: "app2",
   components: {
-    ElementUi
+    DataTable
   }
 };
 </script>

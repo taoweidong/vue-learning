@@ -1,17 +1,13 @@
 <template>
-    <div class="world">
-        
-        <h1 v-html="msg"></h1>
-        <h2>child to tell me: {{childworlds}}</h2>
-        <input v-model="newItem" @keyup.enter="addNew">
-        <ul>
-            <li v-for="item in items" v-bind:class="{finished: item.isFinished}"
-            v-on:click="toggleFinish(item)">
-                {{item.label}}
-            </li>
-        </ul>
-        <components-a msgfromworld="you die!!!" v-on:child-tell-me-something="listenToMyBody"></components-a>
-    </div>
+  <div class="world">
+    <h1 v-html="msg"></h1>
+    <h2>child to tell me: {{childworlds}}</h2>
+    <input v-model="newItem" @keyup.enter="addNew">
+    <ul>
+      <!-- <li v-for="item in items">{{item.label}}</li> -->
+    </ul>
+    <components-a msgfromworld="you die!!!" v-on:child-tell-me-something="listenToMyBody"></components-a>
+  </div>
 </template>
 
 <script>
