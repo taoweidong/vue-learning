@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>品牌列表案例</title>
     <script src="../vue.js"></script>
+    <script src="data.js"></script>
     <!-- 引入boostrap样式文件 -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -24,7 +25,7 @@
                     <input type="text" class="form-control" v-model="id">
                 </label>
                 <label>name:
-                    <input type="text" class="form-control" v-model="name">
+                    <input type="text" class="form-control" v-model="name" @keyup.enter="add">
                 </label>
 
                 <input type="button" value="添加" class="btn btn-primary" @click="add">
@@ -43,7 +44,7 @@
                 <tr v-for="(item, index) in list" :key="index">
                     <td v-text="item.id"></td>
                     <td v-text="item.name"></td>
-                    <td v-text="item.cTime"></td>
+                    <td>{{item.cTime | capitalize('cehsi')}}</td>
                     <td><a href="" @click.prevent="del(item.id)">删除</a></td>
                 </tr>
             </tbody>
@@ -89,6 +90,13 @@
                             return true;
                         }
                     });
+                }
+            },
+            filters: {
+                capitalize: function (value, arg) {
+                    var dt = new Date(value);
+                    return dt.getFullYear() + '-' + (dt.getMonth() + 1).toString().padStart(2, '0') + '-' + dt.getDate() + ' ' +
+                        dt.getHours().toString().padStart(2, '0') + ':' + dt.getMinutes().toString().padStart(2, '0') + ':' + dt.getSeconds();
                 }
             }
         })  
