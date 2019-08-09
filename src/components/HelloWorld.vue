@@ -20,11 +20,13 @@ export default {
   methods: {
     test: async function() {
       let params = {};
-      const res = await httpUtil.get("/hello/getMsg", params);
-
-      console.log(res);
-      this.msg = res.data;
-      alert("请求成功");
+      const res = await httpUtil.post("/user/query", params);
+      console.log(res)
+      if (res.success) {
+        console.log(res);
+        this.msg = res.payload;
+        alert("请求成功");
+      }
     }
   }
 };
