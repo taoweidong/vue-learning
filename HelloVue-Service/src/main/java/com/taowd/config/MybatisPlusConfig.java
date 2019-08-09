@@ -10,14 +10,14 @@ import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
 
 @EnableTransactionManagement
 @Configuration
-@MapperScan("com.taowd.mapper")
+@MapperScan("com.taowd.module.mapper")
 public class MybatisPlusConfig {
 
 	/**
 	 * SQL执行效率插件
 	 */
 	@Bean
-	@Profile({ "dev", "test" }) // 设置 dev test 环境开启
+	// @Profile({ "dev", "test" }) // 设置 dev test 环境开启
 	public PerformanceInterceptor performanceInterceptor() {
 
 		return new PerformanceInterceptor();
