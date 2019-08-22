@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <!-- <img src="./assets/logo.png" /> -->
-    <!-- <HelloWorld /> -->
-    <HelloEasyUI />
+    <HelloWorld @myTest="test" />
+    <!-- <HelloEasyUI /> -->
+    <!-- <Login /> -->
   </div>
 </template>
 
@@ -15,6 +16,11 @@ export default {
   components: {
     HelloWorld,
     HelloEasyUI
+  },
+  methods: {
+    test(data) {
+      console.log("子组件触发:" + data);
+    }
   }
 };
 </script>
