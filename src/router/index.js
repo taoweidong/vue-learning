@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
+import HelloEasyUI from '@/components/HelloEasyUI'
 
 // in development-env not use lazy-loading, because lazy-loading too many pages will cause webpack hot update too slow. so only in production use lazy-loading;
 // detail: https://panjiachen.github.io/vue-element-admin-site/#/lazy-loading
@@ -24,8 +25,8 @@ Vue.use(Router)
 **/
 export const constantRouterMap = [{
   path: '/',
-  name: 'HelloWorld',
-  component: HelloWorld
+  name: 'HelloEasyUI',
+  component: HelloEasyUI
 }]
 
 export default new Router({

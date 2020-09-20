@@ -68,6 +68,26 @@ export default {
       }
     )
   },
+  post_json(url, data) {
+    return axios({
+      method: 'post',
+      // baseURL: 'https://cnodejs.org/api/v1',
+      url,
+      data: data,
+      timeout: 10000,
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8'
+      }
+    }).then(
+      (response) => {
+        return checkStatus(response)
+      }
+    ).then(
+      (res) => {
+        return checkCode(res)
+      }
+    )
+  },
   get(url, params) {
     return axios({
       method: 'get',

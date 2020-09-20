@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <!-- <img src="./assets/logo.png" /> -->
-    <HelloWorld @myTest="test" />
+    <!-- <HelloWorld @myTest="test" /> -->
     <!-- <HelloEasyUI /> -->
+    <router-view v-if="isRouterAlive"></router-view>
     <!-- <Login /> -->
   </div>
 </template>
@@ -13,6 +14,16 @@ import HelloEasyUI from "./components/HelloEasyUI";
 
 export default {
   name: "App",
+  provide() {
+    return {
+      reload: this.reload
+    };
+  },
+  data() {
+    return {
+      isRouterAlive: true
+    };
+  },
   components: {
     HelloWorld,
     HelloEasyUI
@@ -20,6 +31,12 @@ export default {
   methods: {
     test(data) {
       console.log("子组件触发:" + data);
+    },
+    reload() {
+      this.isRouterAlive = false;
+      this.$nextTick(function() {
+        this.isRouterAlive = true;
+      });
     }
   }
 };
@@ -32,6 +49,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 10px;
 }
 </style>
